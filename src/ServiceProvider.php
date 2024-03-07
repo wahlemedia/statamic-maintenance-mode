@@ -44,15 +44,17 @@ class ServiceProvider extends AddonServiceProvider
 
     protected function bootAddonConfig(): self
     {
-        // Todo: implement bootAddonConfig
+        $this->publishes([
+            __DIR__.'/../config/maintainance-mode.php' => config_path('statamic-maintenance-mode.php'),
+        ], $this->namespace);
 
         return $this;
     }
 
     protected function bootTranslations(): self
     {
-        // Todo: implement bootTranslations
-
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', $this->namespace);
+        
         return $this;
     }
 
@@ -61,5 +63,12 @@ class ServiceProvider extends AddonServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', $this->namespace);
 
         return $this;
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../config/maintainance-mode.php', $this->namespace);
+
+        parent::register();
     }
 }
