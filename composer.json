@@ -1,0 +1,19 @@
+{
+    "name": "wahlemedia/statamic-maintenance-mode",
+    "autoload": {
+        "psr-4": {
+            "Wahlemedia\\StatamicMaintenanceMode\\": "src"
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Statamic Maintenance Mode",
+            "description": "Statamic Maintenance Mode addon"
+        },
+        "laravel": {
+            "providers": [
+                "Wahlemedia\\StatamicMaintenanceMode\\ServiceProvider"
+            ]
+        }
+    }
+}
