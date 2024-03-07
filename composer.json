@@ -15,5 +15,8 @@
                 "Wahlemedia\\StatamicMaintenanceMode\\ServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.14"
     }
 }
