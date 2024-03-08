@@ -6,7 +6,6 @@ return [
     'cp' => [
         'maintenance_mode_navigation' => 'Wartung',
         'maintenance_title' => 'Wartungsmodus',
-        'maintenance_description' => 'Aktivieren oder deaktivieren Sie den Wartungsmodus.',
         'maintenance_mode' => 'Wartungsmodus',
         'maintenance_mode_description' => 'Versetzt die Website in den Wartungsmodus.',
         'maintenance_site' => 'Wartungsseite',

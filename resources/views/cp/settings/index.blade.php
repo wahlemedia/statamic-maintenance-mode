@@ -1,5 +1,5 @@
 @extends('statamic::layout')
-@section('title', $title, Statamic::crumb(__('statamic-maintenance-mode::messages.cp.maintenance_title'),
+@section('title', $title, Statamic::crumb(__('statamic-maintenance-mode-translations::messages.cp.maintenance_title'),
     __('Utilities')))
 
     @php
