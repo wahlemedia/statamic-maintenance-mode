@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wahlemedia\StatamicMaintenanceMode;
 
-use Statamic\CP\Navigation\NavItem;
-use Statamic\Facades\CP\Nav;
 use Statamic\Providers\AddonServiceProvider;
+use Statamic\Facades\Utility;
+use Wahlemedia\StatamicMaintenanceMode\Http\Controllers\CP\MaintainanceModeController;
 
 class ServiceProvider extends AddonServiceProvider
 {
@@ -22,30 +22,22 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
-        Nav::extend(function (\Statamic\CP\Navigation\Nav $nav) {
-            /** @var \Statamic\CP\Navigation\NavItem $utils */
-            $utils = $nav->find('Tools', 'Utilities');
-
-            if (!$utils) {
-                $utils = $nav->create('Utilities')->section('Tools');
-            }
-
-            $item = (new NavItem())
-                ->display(__('statamic-maintenance-mode::messages.cp.maintenance_mode_button'))
-                ->section('Tools')
-                ->route('wahlemedia.maintenance.settings.index')
-                ->icon('cog')
-                ->active('utilities/maintenance(/(.*)?|$)')
-                ->id('tools:utilities:maintenance');
-
-            $utils->children([...$utils->children(), $item]);
-        });
+        Utility::register('maintenance-mode')
+            ->action([MaintainanceModeController::class, 'index'])
+            ->title(__('statamic-maintenance-mode::messages.cp.maintenance_mode'))
+            ->icon('cog')
+            ->navTitle(__('statamic-maintenance-mode::messages.cp.maintenance_mode'))
+            ->description(__('statamic-maintenance-mode::messages.cp.maintenance_mode_description'))
+            // ->routes(function ($router) {
+            //     $router->post('/', [MaintainanceModeController::class, 'update'])->name('wahlemedia.maintenance.settings.update');
+            // });
+            ;
     }
 
     protected function bootAddonConfig(): self
     {
         $this->publishes([
-            __DIR__.'/../config/maintainance-mode.php' => config_path('statamic-maintenance-mode.php'),
+            __DIR__ . '/../config/maintainance-mode.php' => config_path('statamic-maintenance-mode.php'),
         ], $this->namespace);
 
         return $this;
@@ -53,21 +45,21 @@ class ServiceProvider extends AddonServiceProvider
 
     protected function bootTranslations(): self
     {
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', $this->namespace);
-        
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', $this->namespace);
+
         return $this;
     }
 
     public function bootViews(): self
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', $this->namespace);
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', $this->namespace);
 
         return $this;
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/maintainance-mode.php', $this->namespace);
+        $this->mergeConfigFrom(__DIR__ . '/../config/maintainance-mode.php', $this->namespace);
 
         parent::register();
     }

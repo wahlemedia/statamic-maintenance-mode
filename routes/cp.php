@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
-use Wahlemedia\StatamicMaintenanceMode\Http\Controllers\Admin\MaintainanceModeController;
+use Wahlemedia\StatamicMaintenanceMode\Http\Controllers\CP\MaintainanceModeController;
 
 Route::prefix('utilities/maintenance/')
     ->name('wahlemedia.maintenance.settings.')

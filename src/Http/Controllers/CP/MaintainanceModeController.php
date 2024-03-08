@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wahlemedia\StatamicMaintenanceMode\Http\Controllers\Admin;
+namespace Wahlemedia\StatamicMaintenanceMode\Http\Controllers\CP;
 
 use Illuminate\Http\Request;
 use Statamic\Facades\Blueprint;

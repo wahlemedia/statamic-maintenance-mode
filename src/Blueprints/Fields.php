@@ -14,7 +14,7 @@ class Fields
                 'field' => [
                     'type' => 'toggle',
                     'display' => __('statamic-maintenance-mode::messages.cp.maintenance_mode'),
-                    'instructions' => __('statamic-maintenance-mode::messages.cp.maintenance_mode_instructions'),
+                    'instructions' => __('statamic-maintenance-mode::messages.cp.maintenance_mode_description'),
                     'default' => false,
                     'width' => 100,
                     'validate' => 'required|boolean',
@@ -26,7 +26,7 @@ class Fields
                     'type' => 'entries',
                     'max_items' => 1,
                     'display' => __('statamic-maintenance-mode::messages.cp.maintenance_site'),
-                    'instructions' => __('statamic-maintenance-mode::messages.cp.maintenance_site_instructions'),
+                    'instructions' => __('statamic-maintenance-mode::messages.cp.maintenance_site_description'),
                     'width' => 100,
                     'mode' => 'default',
                     'validate' => '',
