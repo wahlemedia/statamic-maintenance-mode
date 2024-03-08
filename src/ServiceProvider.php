@@ -7,6 +7,7 @@ namespace Wahlemedia\StatamicMaintenanceMode;
 use Statamic\Providers\AddonServiceProvider;
 use Statamic\Facades\Utility;
 use Wahlemedia\StatamicMaintenanceMode\Http\Controllers\CP\MaintainanceModeController;
+use Wahlemedia\StatamicMaintenanceMode\Http\Middleware\HandleMaintenanceMode;
 
 class ServiceProvider extends AddonServiceProvider
 {
@@ -16,6 +17,10 @@ class ServiceProvider extends AddonServiceProvider
     protected $routes = [
         'cp' => __DIR__ . '/../routes/cp.php',
         'web' => __DIR__ . '/../routes/web.php',
+    protected $middlewareGroups = [
+        'web' => [
+            HandleMaintenanceMode::class,
+        ],
     ];
 
     protected $config;

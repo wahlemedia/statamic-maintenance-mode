@@ -32,8 +32,8 @@ class MaintainanceModeController extends CpController
             ->addValues($values)
             ->preProcess();
 
-        return view('statamic-maintenance-mode::cp.settings.index', [
-            'title' => __('statamic-maintenance-mode::messages.cp.maintenance_title'),
+        return view('statamic-maintenance-mode-views::cp.settings.index', [
+            'title' => __('statamic-maintenance-mode-translations::messages.cp.maintenance_title'),
             'action' => cp_route('utilities.maintenance-mode'),
             'blueprint' => $this->blueprint()->toPublishArray(),
             'meta' => $fields->meta(),
