@@ -28,10 +28,9 @@ class ServiceProvider extends AddonServiceProvider
             ->icon('cog')
             ->navTitle(__('statamic-maintenance-mode::messages.cp.maintenance_mode'))
             ->description(__('statamic-maintenance-mode::messages.cp.maintenance_mode_description'))
-            // ->routes(function ($router) {
-            //     $router->post('/', [MaintainanceModeController::class, 'update'])->name('wahlemedia.maintenance.settings.update');
-            // });
-            ;
+            ->routes(function ($router) {
+                $router->post('/', [MaintainanceModeController::class, 'update'])->name('wahlemedia.maintenance.settings.update');
+            });
     }
 
     protected function bootAddonConfig(): self

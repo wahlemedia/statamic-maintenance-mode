@@ -12,7 +12,6 @@
     @endphp
 
 @section('content')
-
     <publish-form class="publish-form" title="{{ $title }}" action="{{ $action }}"
         :blueprint='@json($blueprint)' :meta='@json($meta)'
         :values='@json($values)' :breadcrumbs='@json($breadcrumbs)' />

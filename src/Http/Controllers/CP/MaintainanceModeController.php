@@ -34,7 +34,7 @@ class MaintainanceModeController extends CpController
 
         return view('statamic-maintenance-mode::cp.settings.index', [
             'title' => __('statamic-maintenance-mode::messages.cp.maintenance_title'),
-            'action' => cp_route('wahlemedia.maintenance.settings.update'),
+            'action' => cp_route('utilities.maintenance-mode'),
             'blueprint' => $this->blueprint()->toPublishArray(),
             'meta' => $fields->meta(),
             'values' => $fields->values(),
