@@ -1,36 +1,54 @@
 {
-    "name": "wahlemedia/statamic-maintenance-mode",
-    "description": "Set your statamic site into maintenance mode",
-    "type": "statamic-addon",
-    "autoload": {
-        "psr-4": {
-            "Wahlemedia\\StatamicMaintenanceMode\\": "src"
-        }
+  "name": "wahlemedia/statamic-maintenance-mode",
+  "description": "Set your statamic site into maintenance mode",
+  "type": "statamic-addon",
+  "authors": [
+    {
+      "name": "Philipp Wahle",
+      "email": "philipp.wahle@wahlemedia.de",
+      "homepage": "https://wahlemedia.de"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/wahlemedia/statamic-maintenance-mode/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "Wahlemedia\\StatamicMaintenanceMode\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "statamic": {
+      "name": "Statamic Maintenance Mode",
+      "description": "Set your statamic site into maintenance mode"
     },
-    "authors": [
-        {
-            "name": "Philipp Wahle",
-            "email": "philipp.wahle@wahlemedia.de",
-            "homepage": "https://wahlemedia.de"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/wahlemedia/statamic-maintenance-mode/issues"
-    },
-    "extra": {
-        "statamic": {
-            "name": "Statamic Maintenance Mode",
-            "description": "Set your statamic site into maintenance mode"
-        },
-        "laravel": {
-            "providers": [
-                "Wahlemedia\\StatamicMaintenanceMode\\ServiceProvider"
-            ]
-        }
-    },
-    "require-dev": {
-        "laravel/pint": "^1.14"
-    },
-    "minimum-stability": "dev",
-	"prefer-stable": true
+    "laravel": {
+      "providers": [
+        "Wahlemedia\\StatamicMaintenanceMode\\ServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "statamic/cms": "^4.0"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.14",
+    "orchestra/testbench": "^8.21",
+    "phpunit/phpunit": "^10.5",
+    "pestphp/pest": "^2.34"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pixelfear/composer-dist-plugin": true,
+      "pestphp/pest-plugin": true
+    }
+  }
 }
