@@ -37,11 +37,11 @@ class ServiceProvider extends AddonServiceProvider
             });
     }
 
-    protected function bootAddonConfig(): self
+    protected function bootConfig(): self
     {
         $this->publishes([
-            __DIR__.'/../config/maintainance-mode.php' => config_path('statamic-maintenance-mode.php'),
-        ], "{$this->namespace}-config");
+            __DIR__.'/../config/maintainance-mode.php' => config_path('statamic/maintenance_mode.php'),
+        ], 'config');
 
         return $this;
     }
