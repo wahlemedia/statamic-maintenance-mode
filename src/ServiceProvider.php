@@ -13,11 +13,6 @@ class ServiceProvider extends AddonServiceProvider
 {
     protected $namespace = 'statamic-maintenance-mode';
 
-    protected $routes = [
-        'cp' => __DIR__.'/../routes/cp.php',
-        'web' => __DIR__.'/../routes/web.php',
-    ];
-
     protected $middlewareGroups = [
         'web' => [
             HandleMaintenanceMode::class,
