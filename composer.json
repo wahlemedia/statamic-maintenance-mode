@@ -2,6 +2,12 @@
   "name": "wahlemedia/statamic-maintenance-mode",
   "description": "Set your statamic site into maintenance mode",
   "type": "statamic-addon",
+  "license": "MIT",
+  "keywords": [
+    "statamic",
+    "maintenance"
+  ],
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Philipp Wahle",
