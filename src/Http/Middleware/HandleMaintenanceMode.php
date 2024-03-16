@@ -20,7 +20,7 @@ class HandleMaintenanceMode
     public function handle($request, $next)
     {
         $url = Str::start($request->getRequestUri(), '/');
-        $maintenance = new MaintenanceMode();
+        $maintenance = app(MaintenanceMode::class);
 
         /**
          * If user is a super user or has permission to access the control panel,

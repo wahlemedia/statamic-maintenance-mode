@@ -23,6 +23,10 @@ class ServiceProvider extends AddonServiceProvider
 
     public function bootAddon()
     {
+        $this->app->singleton('maintenance-mode', function () {
+            return app(MaintenanceMode::class);
+        });
+
         Utility::register('maintenance-mode')
             ->action([MaintainanceModeController::class, 'index'])
             ->title(__('statamic-maintenance-mode-translations::messages.cp.maintenance_mode'))
