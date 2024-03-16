@@ -61,4 +61,23 @@ class MaintenanceMode
     {
         return $url != $this->getPageUri();
     }
+
+    public function isWhitelistedPage(string $url): bool
+    {
+        $whitelist = $this->getWhitelistedPages();
+
+        foreach ($whitelist as $page) {
+            $uri = Entry::find($page)->uri();
+            if ($url === $uri) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected function getWhitelistedPages(): array
+    {
+        return $this->values['maintenance_whitelist_sites'] ?? [];
+    }
 }

@@ -47,6 +47,14 @@ class HandleMaintenanceMode
         }
 
         /**
+         * If the request is for a whitelisted site and the maintenance mode is activated,
+         * the request will be passed to the next middleware.
+         */
+        if ($maintenance->isActivated() && $maintenance->isWhitelistedPage($url)) {
+            return $next($request);
+        }
+
+        /**
          * If the request is not for the maintenance page and the maintenance mode is activated,
          * redirect the user to the maintenance page.
          */

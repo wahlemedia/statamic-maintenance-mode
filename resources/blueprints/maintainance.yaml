@@ -35,4 +35,17 @@ tabs:
               hide_display: false
               validate:
                 - 'required_if:maintenance_enabled,true'
+          -
+            handle: maintenance_whitelist_sites
+            field:
+              mode: default
+              create: true
+              type: entries
+              display: 'statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites'
+              instructions: 'statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites_description'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
 title: Maintenance
