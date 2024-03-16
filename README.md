@@ -30,8 +30,8 @@ This will copy the default config file to `config/statamic/maintenance_mode.php`
 
 ## How to Use
 
-1. Create a new maintance page under your page collection
-1. Go under `Utilites > Maintenance` to select a maintance site and enable / disable maintance mode 
+1. Create a new maintenance page under your page collection
+1. Go under `Utilites > Maintenance` to select a maintenance site and enable / disable maintenance mode 
 1. Add sites, that shoud be whitelisted.
 
 ## Issues and Support

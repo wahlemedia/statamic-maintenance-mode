@@ -12,7 +12,7 @@ use Statamic\Facades\YAML;
 use Statamic\Fields\Blueprint;
 use Statamic\Http\Controllers\CP\CpController;
 
-class MaintainanceModeController extends CpController
+class MaintenanceModeController extends CpController
 {
     protected string $valuePath;
 
@@ -54,7 +54,7 @@ class MaintainanceModeController extends CpController
 
     protected function buildBlueprint(): Blueprint
     {
-        $path = Path::assemble(__DIR__.'/../../../../', 'resources', 'blueprints', 'maintainance.yaml');
+        $path = Path::assemble(__DIR__.'/../../../../', 'resources', 'blueprints', 'maintenance.yaml');
 
         $yaml = YAML::file($path)->parse();
 

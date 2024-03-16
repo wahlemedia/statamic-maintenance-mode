@@ -65,6 +65,6 @@ abstract class TestCase extends OrchestraTestCase
 
         $app['config']->set('statamic.users.repository', 'file');
 
-        $app['config']->set('statamic.maintenance-mode', require (__DIR__.'/../config/maintainance-mode.php'));
+        $app['config']->set('statamic.maintenance-mode', require (__DIR__.'/../config/maintenance-mode.php'));
     }
 }
