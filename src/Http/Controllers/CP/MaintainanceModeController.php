@@ -5,29 +5,29 @@ declare(strict_types=1);
 namespace Wahlemedia\StatamicMaintenanceMode\Http\Controllers\CP;
 
 use Illuminate\Http\Request;
-use Statamic\Facades\Blueprint;
+use Statamic\Facades\Blueprint as BlueprintFacace;
 use Statamic\Facades\File;
+use Statamic\Facades\Path;
 use Statamic\Facades\YAML;
-use Statamic\Fields\Blueprint as BlueprintFields;
+use Statamic\Fields\Blueprint;
 use Statamic\Http\Controllers\CP\CpController;
-use Wahlemedia\StatamicMaintenanceMode\Blueprints\Fields;
 
 class MaintainanceModeController extends CpController
 {
-    protected string $path;
+    protected string $valuePath;
 
     public function __construct(Request $request)
     {
         parent::__construct($request);
 
-        $this->path = config('statamic-maintenance-mode.path');
+        $this->valuePath = config('statamic-maintenance-mode.path');
     }
 
     public function index()
     {
-        $values = file_exists($this->path) ? YAML::file($this->path)->parse() : [];
+        $values = file_exists($this->valuePath) ? YAML::file($this->valuePath)->parse() : [];
 
-        $fields = $this->blueprint()
+        $fields = $this->buildBlueprint()
             ->fields()
             ->addValues($values)
             ->preProcess();
@@ -35,7 +35,7 @@ class MaintainanceModeController extends CpController
         return view('statamic-maintenance-mode-views::cp.settings.index', [
             'title' => __('statamic-maintenance-mode-translations::messages.cp.maintenance_title'),
             'action' => cp_route('utilities.maintenance-mode'),
-            'blueprint' => $this->blueprint()->toPublishArray(),
+            'blueprint' => $this->buildBlueprint()->toPublishArray(),
             'meta' => $fields->meta(),
             'values' => $fields->values(),
         ]);
@@ -43,16 +43,21 @@ class MaintainanceModeController extends CpController
 
     public function update(Request $request)
     {
-        $fields = $this->blueprint()->fields()->addValues($request->all());
+        $fields = $this->buildBlueprint()
+            ->fields()
+            ->addValues($request->all());
+
         $fields->validate();
 
-        File::put($this->path, YAML::dump($fields->process()->values()->all()));
+        File::put($this->valuePath, YAML::dump($fields->process()->values()->all()));
     }
 
-    protected function blueprint(): BlueprintFields
+    protected function buildBlueprint(): Blueprint
     {
-        return Blueprint::make()->setContents([
-            'fields' => Fields::get(),
-        ]);
+        $path = Path::assemble(__DIR__.'/../../../../', 'resources', 'blueprints', 'maintainance.yaml');
+
+        $yaml = YAML::file($path)->parse();
+
+        return BlueprintFacace::make()->setContents($yaml);
     }
 }
