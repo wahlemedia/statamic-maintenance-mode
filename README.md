@@ -8,7 +8,11 @@
 
 > This is a tiny addon for Statamic CMS that allows easily to set your site into maintenance mode and whitelist sites, that should be still reachable (i.e. like /imprint or /privacy). When in maintenance mode, visitors to the site will see a customizable maintenance page, and administrators will be able to access the site normally.
 
+<!-- statamic:hide -->
+
 ![settings](./docs/maintenance-settings.png)
+
+<!-- /statamic:hide -->
 
 ## How to Install
 

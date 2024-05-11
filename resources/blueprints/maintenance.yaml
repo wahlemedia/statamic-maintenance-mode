@@ -8,44 +8,24 @@ tabs:
             handle: maintenance_enabled
             field:
               inline_label_when_true: 'statamic-maintenance-mode-translations::messages.cp.maintenance_mode_enabled'
-              default: false
               type: toggle
               display: 'statamic-maintenance-mode-translations::messages.cp.maintenance_mode'
               instructions: 'statamic-maintenance-mode-translations::messages.cp.maintenance_mode_description'
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
           -
             handle: maintenance_site
             field:
               max_items: 1
-              mode: default
-              create: true
               collections:
                 - pages
               type: entries
               display: 'statamic-maintenance-mode-translations::messages.cp.maintenance_site'
               instructions: 'statamic-maintenance-mode-translations::messages.cp.maintenance_site_description'
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
               validate:
                 - 'required_if:maintenance_enabled,true'
           -
             handle: maintenance_whitelist_sites
             field:
-              mode: default
-              create: true
               type: entries
               display: 'statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites'
               instructions: 'statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites_description'
-              listable: hidden
-              instructions_position: above
-              visibility: visible
-              replicator_preview: true
-              hide_display: false
 title: Maintenance

@@ -7,7 +7,7 @@
     "statamic",
     "maintenance"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "authors": [
     {
       "name": "Philipp Wahle",
@@ -40,13 +40,13 @@
     }
   },
   "require": {
-    "statamic/cms": "^4.0"
+    "statamic/cms": "^5.0"
   },
   "require-dev": {
     "laravel/pint": "^1.14",
     "orchestra/testbench": "^8.21",
-    "phpunit/phpunit": "^10.5",
-    "pestphp/pest": "^2.34"
+    "pestphp/pest": "^2.34",
+    "phpunit/phpunit": "^10.5"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
