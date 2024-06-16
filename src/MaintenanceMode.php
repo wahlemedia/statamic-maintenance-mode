@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Wahlemedia\StatamicMaintenanceMode;
 
+use Statamic\Entries\EntryCollection;
 use Statamic\Facades\GlobalSet;
 use Statamic\Globals\Variables;
-use Statamic\Entries\EntryCollection;
 use Wahlemedia\MaintenanceMode\Exceptions\MissingMaintenancePageException;
 
 class MaintenanceMode
@@ -27,7 +27,7 @@ class MaintenanceMode
         /** @var Statamic\Contracts\Entries\Entry|null */
         $entry = $this->siteVariables->maintenance_site ?? null;
 
-        if (!$entry) {
+        if (! $entry) {
             throw new MissingMaintenancePageException();
         }
 
@@ -41,7 +41,7 @@ class MaintenanceMode
 
     public function isNotActivated(): bool
     {
-        return !$this->isActivated();
+        return ! $this->isActivated();
     }
 
     public function isMaintenancePage(string $url): bool
@@ -59,7 +59,7 @@ class MaintenanceMode
         $whitelist = $this->getWhitelistedPages();
 
         foreach ($whitelist as $entry) {
-            if ($url ===  $entry->uri()) {
+            if ($url === $entry->uri()) {
                 return true;
             }
         }
@@ -69,8 +69,9 @@ class MaintenanceMode
 
     protected function getWhitelistedPages(): EntryCollection
     {
-        if (!$this->siteVariables->has('maintenance_whitelist_sites'))
+        if (! $this->siteVariables->has('maintenance_whitelist_sites')) {
             return EntryCollection::make();
+        }
 
         return $this->siteVariables->maintenance_whitelist_sites;
     }

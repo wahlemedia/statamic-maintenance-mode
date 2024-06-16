@@ -27,7 +27,7 @@ class HandleMaintenanceMode
          * the request will be passed to the next middleware.
          */
 
-        /** @var App\Models\User  */
+        /** @var App\Models\User */
         $user = auth()->user();
 
         if ($user?->isSuper() || $user?->hasPermission('access cp')) {
