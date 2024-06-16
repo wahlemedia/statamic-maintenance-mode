@@ -37,7 +37,7 @@ class ServiceProvider extends AddonServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/maintenance-mode.php', $this->namespace);
+        $this->mergeConfigFrom(__DIR__.'/../config/maintenance-mode.php', $this->namespace);
 
         parent::register();
     }
