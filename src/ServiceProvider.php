@@ -26,9 +26,18 @@ class ServiceProvider extends AddonServiceProvider
         });
     }
 
-    public function register()
+    // protected function bootTranslations(): self
+    // {
+    //     parent::bootTranslations();
+
+    //     $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', "{$this->namespace}-translations");
+
+    //     return $this;
+    // }
+
+    public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/maintenance-mode.php', $this->namespace);
+        $this->mergeConfigFrom(__DIR__ . '/../config/maintenance-mode.php', $this->namespace);
 
         parent::register();
     }
