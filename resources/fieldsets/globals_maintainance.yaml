@@ -2,11 +2,11 @@ title: "Globals Maintenance Mode: Maintenance"
 fields:
   - handle: maintenance_enabled
     field:
-      inline_label_when_true: "statamic-maintenance-mode-translations::messages.cp.maintenance_mode_enabled"
+      inline_label_when_true: "Maintenance mode enabled"
       type: toggle
       icon: toggle
-      display: "statamic-maintenance-mode-translations::messages.cp.maintenance_mode"
-      instructions: "statamic-maintenance-mode-translations::messages.cp.maintenance_mode_description"
+      display: "Maintenance mode"
+      instructions: "Enable or disable the maintenance mode of the site."
       listable: hidden
   - handle: maintenance_site
     field:
@@ -15,8 +15,8 @@ fields:
         - pages
       type: entries
       icon: entries
-      display: "statamic-maintenance-mode-translations::messages.cp.maintenance_site"
-      instructions: "statamic-maintenance-mode-translations::messages.cp.maintenance_site_description"
+      display: "Maintenance site"
+      instructions: "Select the site that should be shown during maintenance mode."
       listable: hidden
       validate:
         - "required_if:maintenance_enabled,true"
@@ -24,6 +24,6 @@ fields:
     field:
       type: entries
       icon: entries
-      display: "statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites"
-      instructions: "statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites_description"
+      display: "Whitelisted sites"
+      instructions: "Select the sites that reachable during maintenance mode."
       listable: hidden
