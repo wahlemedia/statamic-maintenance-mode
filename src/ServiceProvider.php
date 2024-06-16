@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Wahlemedia\StatamicMaintenanceMode;
 
 use Statamic\Facades\Utility;
+use Statamic\Facades\GlobalSet;
 use Statamic\Providers\AddonServiceProvider;
-use Wahlemedia\StatamicMaintenanceMode\Http\Controllers\CP\MaintenanceModeController;
 use Wahlemedia\StatamicMaintenanceMode\Http\Middleware\HandleMaintenanceMode;
+use Wahlemedia\StatamicMaintenanceMode\Http\Controllers\CP\MaintenanceModeController;
 
 class ServiceProvider extends AddonServiceProvider
 {
@@ -24,8 +25,11 @@ class ServiceProvider extends AddonServiceProvider
     public function bootAddon()
     {
         $this->app->singleton('maintenance-mode', function () {
-            return app(MaintenanceMode::class);
+            return MaintenanceMode::instance();
         });
+
+
+        return;
 
         Utility::register('maintenance-mode')
             ->action([MaintenanceModeController::class, 'index'])
@@ -41,32 +45,9 @@ class ServiceProvider extends AddonServiceProvider
             });
     }
 
-    protected function bootConfig(): self
-    {
-        $this->publishes([
-            __DIR__.'/../config/maintenance-mode.php' => config_path('statamic/maintenance_mode.php'),
-        ], 'config');
-
-        return $this;
-    }
-
-    protected function bootTranslations(): self
-    {
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', "{$this->namespace}-translations");
-
-        return $this;
-    }
-
-    public function bootViews(): self
-    {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', "{$this->namespace}-views");
-
-        return $this;
-    }
-
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/maintenance-mode.php', $this->namespace);
+        $this->mergeConfigFrom(__DIR__ . '/../config/maintenance-mode.php', $this->namespace);
 
         parent::register();
     }

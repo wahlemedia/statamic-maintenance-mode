@@ -10,9 +10,14 @@
   "version": "1.2.0",
   "authors": [
     {
+      "name": "wahlemedia",
+      "homepage": "https://www.wahlemedia.de",
+      "role": "Owner"
+    },
+    {
       "name": "Philipp Wahle",
       "email": "philipp.wahle@wahlemedia.de",
-      "homepage": "https://wahlemedia.de"
+      "role": "Developer"
     }
   ],
   "support": {

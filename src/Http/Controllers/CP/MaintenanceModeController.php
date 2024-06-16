@@ -54,7 +54,7 @@ class MaintenanceModeController extends CpController
 
     protected function buildBlueprint(): Blueprint
     {
-        $path = Path::assemble(__DIR__.'/../../../../', 'resources', 'blueprints', 'maintenance.yaml');
+        $path = Path::assemble(__DIR__ . '/../../../../', 'resources', 'blueprints', 'maintenance.yaml');
 
         $yaml = YAML::file($path)->parse();
 

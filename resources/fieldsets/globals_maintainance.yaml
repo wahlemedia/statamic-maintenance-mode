@@ -1,0 +1,29 @@
+title: "Globals Maintenance Mode: Maintenance"
+fields:
+  - handle: maintenance_enabled
+    field:
+      inline_label_when_true: "statamic-maintenance-mode-translations::messages.cp.maintenance_mode_enabled"
+      type: toggle
+      icon: toggle
+      display: "statamic-maintenance-mode-translations::messages.cp.maintenance_mode"
+      instructions: "statamic-maintenance-mode-translations::messages.cp.maintenance_mode_description"
+      listable: hidden
+  - handle: maintenance_site
+    field:
+      max_items: 1
+      collections:
+        - pages
+      type: entries
+      icon: entries
+      display: "statamic-maintenance-mode-translations::messages.cp.maintenance_site"
+      instructions: "statamic-maintenance-mode-translations::messages.cp.maintenance_site_description"
+      listable: hidden
+      validate:
+        - "required_if:maintenance_enabled,true"
+  - handle: maintenance_whitelist_sites
+    field:
+      type: entries
+      icon: entries
+      display: "statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites"
+      instructions: "statamic-maintenance-mode-translations::messages.cp.maintenance_whitelist_sites_description"
+      listable: hidden

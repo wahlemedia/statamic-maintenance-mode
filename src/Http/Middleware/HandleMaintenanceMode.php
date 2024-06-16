@@ -26,7 +26,10 @@ class HandleMaintenanceMode
          * If user is a super user or has permission to access the control panel,
          * the request will be passed to the next middleware.
          */
+
+        /** @var App\Models\User  */
         $user = auth()->user();
+
         if ($user?->isSuper() || $user?->hasPermission('access cp')) {
             return $next($request);
         }
