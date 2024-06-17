@@ -1,0 +1,29 @@
+title: "Globals Maintenance Mode: Maintenance"
+fields:
+  - handle: maintenance_enabled
+    field:
+      inline_label_when_true: "Maintenance mode enabled"
+      type: toggle
+      icon: toggle
+      display: "Maintenance mode"
+      instructions: "Enable or disable the maintenance mode of the site."
+      listable: hidden
+  - handle: maintenance_site
+    field:
+      max_items: 1
+      collections:
+        - pages
+      type: entries
+      icon: entries
+      display: "Maintenance site"
+      instructions: "Select the site that should be shown during maintenance mode."
+      listable: hidden
+      validate:
+        - "required_if:maintenance_enabled,true"
+  - handle: maintenance_whitelist_sites
+    field:
+      type: entries
+      icon: entries
+      display: "Whitelisted sites"
+      instructions: "Select the sites that reachable during maintenance mode."
+      listable: hidden

@@ -4,47 +4,39 @@ declare(strict_types=1);
 
 namespace Wahlemedia\StatamicMaintenanceMode;
 
-use Statamic\Facades\Entry;
-use Statamic\Facades\YAML;
+use Statamic\Entries\EntryCollection;
+use Statamic\Facades\GlobalSet;
+use Statamic\Globals\Variables;
 use Wahlemedia\MaintenanceMode\Exceptions\MissingMaintenancePageException;
 
 class MaintenanceMode
 {
     protected string $path;
 
-    protected array $values = [];
+    protected Variables $siteVariables;
 
     public function __construct()
     {
-        $this->path = config('statamic-maintenance-mode.path');
+        $setName = config('statamic-maintenance-mode.global_set');
 
-        $this->values = $this->parseConfig();
-    }
-
-    public static function instance(): self
-    {
-        return new self();
-    }
-
-    protected function parseConfig(): array
-    {
-        return file_exists($this->path) ? YAML::file($this->path)->parse() : [];
+        $this->siteVariables = GlobalSet::find($setName)?->inCurrentSite();
     }
 
     public function getPageUri(): string
     {
-        $page = $this->values['maintenance_site'] ?? null;
+        /** @var Statamic\Contracts\Entries\Entry|null */
+        $entry = $this->siteVariables->maintenance_site ?? null;
 
-        if (! $page) {
+        if (! $entry) {
             throw new MissingMaintenancePageException();
         }
 
-        return Entry::find($page)->uri();
+        return $entry->uri();
     }
 
     public function isActivated(): bool
     {
-        return $this->values['maintenance_enabled'] ?? false;
+        return $this->siteVariables->maintenance_enabled ?? false;
     }
 
     public function isNotActivated(): bool
@@ -66,9 +58,8 @@ class MaintenanceMode
     {
         $whitelist = $this->getWhitelistedPages();
 
-        foreach ($whitelist as $page) {
-            $uri = Entry::find($page)->uri();
-            if ($url === $uri) {
+        foreach ($whitelist as $entry) {
+            if ($url === $entry->uri()) {
                 return true;
             }
         }
@@ -76,8 +67,12 @@ class MaintenanceMode
         return false;
     }
 
-    protected function getWhitelistedPages(): array
+    protected function getWhitelistedPages(): EntryCollection
     {
-        return $this->values['maintenance_whitelist_sites'] ?? [];
+        if (! $this->siteVariables->has('maintenance_whitelist_sites')) {
+            return EntryCollection::make();
+        }
+
+        return $this->siteVariables->maintenance_whitelist_sites;
     }
 }
