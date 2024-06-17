@@ -2,7 +2,7 @@
 
 # Statamic Maintenance Mode
 
-![Statamic 4.0+](https://img.shields.io/badge/Statamic-3.0+-FF269E?style=flat-square&link=https://statamic.com)
+![Statamic 4.0+](https://img.shields.io/badge/Statamic-4.0+-FF269E?style=flat-square&link=https://statamic.com)
 
 <!-- /statamic:hide -->
 
@@ -18,7 +18,7 @@
 
 You can search for this addon in the `Tools > Addons` section of the Statamic control panel and click **install**, or run the following command from your project root:
 
-``` bash
+```bash
 composer require wahlemedia/statamic-maintenance-mode
 ```
 
@@ -34,12 +34,16 @@ This will copy the default config file to `config/statamic/maintenance_mode.php`
 
 ## How to Use
 
-1. Create a new maintenance page under your page collection
-1. Go under `Utilites > Maintenance` to select a maintenance site and enable / disable maintenance mode 
-1. Add sites, that shoud be whitelisted.
+1. Create globals with the name `configuration`. If you like change the name of the globals you can adjust it within the config file.
+1. Link the `statamic-maintenance-mode::globals_maintainance` fieldset.
+1. Add a site that should be used as a maintenance one.
+1. (optional) Add sites, that shoud be whitelisted.
+1. enable or disable maintenance mode.
 
 ## Issues and Support
+
 If you encounter any issues or have questions, please create an issue on the [GitHub](https://github.com/wahlemedia/statamic-maintenance-mode/issues) repository for this addon.
 
 ## License
+
 This addon is released under the [MIT License](LICENSE.md).
