@@ -6,6 +6,7 @@ namespace Wahlemedia\StatamicMaintenanceMode\Http\Middleware;
 
 use Statamic\Support\Str;
 use Wahlemedia\StatamicMaintenanceMode\MaintenanceMode;
+use Statamic\Facades\User;
 
 class HandleMaintenanceMode
 {
@@ -28,7 +29,7 @@ class HandleMaintenanceMode
          */
 
         /** @var \App\Models\User */
-        $user = auth()->user();
+        $user = User::current();
 
         if ($user?->isSuper() || $user?->hasPermission('access cp')) {
             return $next($request);
