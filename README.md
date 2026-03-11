@@ -2,7 +2,7 @@
 
 # Statamic Maintenance Mode
 
-![Statamic 4.0+](https://img.shields.io/badge/Statamic-4.0+-FF269E?style=flat-square&link=https://statamic.com)
+![Statamic 6.0+](https://img.shields.io/badge/Statamic-4.0+-FF269E?style=flat-square&link=https://statamic.com)
 
 <!-- /statamic:hide -->
 
