@@ -7,7 +7,7 @@
     "statamic",
     "maintenance"
   ],
-  "version": "2.0.1",
+  "version": "2.0.2",
   "authors": [
     {
       "name": "wahlemedia",
@@ -45,7 +45,7 @@
     }
   },
   "require": {
-    "statamic/cms": "^5.0"
+    "statamic/cms": "^6.0"
   },
   "require-dev": {
     "laravel/pint": "^1.14",
